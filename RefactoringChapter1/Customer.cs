@@ -31,7 +31,6 @@ namespace RefactoringChapter1
 			// determine ammounts for each line
 			foreach (Rental rental in rentals)
 			{
-				double thisAmount = rental.Charge;
 				
 				// add frequent renter points
 				frequentRenterPoints++;
@@ -45,9 +44,9 @@ namespace RefactoringChapter1
 				
 				// show figures for this rental
 				result += "\t" + rental.Movie.Title + "\t" +
-					thisAmount + "\n";
+					rental.Charge + "\n";
 				
-				totalAmount += thisAmount;
+				totalAmount += rental.Charge;
 			}
 			
 			// add footer lines
