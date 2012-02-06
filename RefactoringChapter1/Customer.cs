@@ -61,31 +61,31 @@ namespace RefactoringChapter1
 		
 		private double AmountFor (Rental rental)
 		{
-			double thisAmount = 0;
+			double result = 0;
 			switch (rental.Movie.PriceCode)
 			{
 			case Movie.Regular:
-				thisAmount += 2;
+				result += 2;
 				if (rental.DaysRented > 2)
 				{
-					thisAmount += (rental.DaysRented - 2) * 1.5;
+					result += (rental.DaysRented - 2) * 1.5;
 				}
 				break;
 					
 			case Movie.NewRelease:
-				thisAmount += rental.DaysRented * 3;
+				result += rental.DaysRented * 3;
 				break;
 					
 			case Movie.Childrens:
-				thisAmount += 1.5;
+				result += 1.5;
 				if (rental.DaysRented > 3)
 				{
-					thisAmount += (rental.DaysRented - 3) * 1.5;
+					result += (rental.DaysRented - 3) * 1.5;
 				}
 				break;
 						
 			}
-			return thisAmount;
+			return result;
 		}
 	}
 }
