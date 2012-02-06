@@ -31,7 +31,7 @@ namespace RefactoringChapter1
 			// determine ammounts for each line
 			foreach (Rental rental in rentals)
 			{
-				double thisAmount = AmountFor(rental);
+				double thisAmount = rental.Charge;
 				
 				// add frequent renter points
 				frequentRenterPoints++;
@@ -59,34 +59,7 @@ namespace RefactoringChapter1
 			
 		}
 		
-		private double AmountFor (Rental rental)
-		{
-			double result = 0;
-			switch (rental.Movie.PriceCode)
-			{
-			case Movie.Regular:
-				result += 2;
-				if (rental.DaysRented > 2)
-				{
-					result += (rental.DaysRented - 2) * 1.5;
-				}
-				break;
-					
-			case Movie.NewRelease:
-				result += rental.DaysRented * 3;
-				break;
-					
-			case Movie.Childrens:
-				result += 1.5;
-				if (rental.DaysRented > 3)
-				{
-					result += (rental.DaysRented - 3) * 1.5;
-				}
-				break;
-						
-			}
-			return result;
-		}
+
 	}
 }
 
