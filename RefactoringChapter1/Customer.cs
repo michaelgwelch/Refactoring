@@ -59,9 +59,9 @@ namespace RefactoringChapter1
 			
 		}
 		
-		private int AmountFor (Rental each)
+		private double AmountFor (Rental rental)
 		{
-			int thisAmount = 0;
+			double thisAmount = 0;
 			switch (rental.Movie.PriceCode)
 			{
 			case Movie.Regular:
