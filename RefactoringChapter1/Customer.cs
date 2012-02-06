@@ -29,31 +29,9 @@ namespace RefactoringChapter1
 			string result = "Rental Record for " + Name + "\n";
 			
 			// determine ammounts for each line
-			foreach (Rental rental in rentals) 
+			foreach (Rental rental in rentals)
 			{
-				double thisAmount = 0;
-				
-				switch (rental.Movie.PriceCode) 
-				{
-				case Movie.Regular:
-					thisAmount += 2;
-					if (rental.DaysRented > 2) {
-						thisAmount += (rental.DaysRented - 2) * 1.5;
-					}
-					break;
-					
-				case Movie.NewRelease:
-					thisAmount += rental.DaysRented * 3;
-					break;
-					
-				case Movie.Childrens:
-					thisAmount += 1.5;
-					if (rental.DaysRented > 3) {
-						thisAmount += (rental.DaysRented - 3) * 1.5;
-					}
-					break;
-						
-				}
+				double thisAmount = AmountFor(rental);
 				
 				// add frequent renter points
 				frequentRenterPoints++;
@@ -79,6 +57,35 @@ namespace RefactoringChapter1
 			
 
 			
+		}
+		
+		private int AmountFor (Rental each)
+		{
+			int thisAmount = 0;
+			switch (rental.Movie.PriceCode)
+			{
+			case Movie.Regular:
+				thisAmount += 2;
+				if (rental.DaysRented > 2)
+				{
+					thisAmount += (rental.DaysRented - 2) * 1.5;
+				}
+				break;
+					
+			case Movie.NewRelease:
+				thisAmount += rental.DaysRented * 3;
+				break;
+					
+			case Movie.Childrens:
+				thisAmount += 1.5;
+				if (rental.DaysRented > 3)
+				{
+					thisAmount += (rental.DaysRented - 3) * 1.5;
+				}
+				break;
+						
+			}
+			return thisAmount;
 		}
 	}
 }
