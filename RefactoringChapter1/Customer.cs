@@ -24,32 +24,52 @@ namespace RefactoringChapter1
 		
 		public string Statement ()
 		{
-			double totalAmount = 0;
-			int frequentRenterPoints = 0;
 			string result = "Rental Record for " + Name + "\n";
 			
 			// determine ammounts for each line
 			foreach (Rental rental in rentals)
 			{
 				
-				frequentRenterPoints += rental.FrequentRenterPoints;
-				
 				// show figures for this rental
 				result += "\t" + rental.Movie.Title + "\t" +
 					rental.Charge + "\n";
 				
-				totalAmount += rental.Charge;
 			}
 			
 			// add footer lines
-			result += "Amount owed is " + totalAmount + "\n";
-			result += "You earned " + frequentRenterPoints + " frequent renter points";
+			result += "Amount owed is " + TotalCharge + "\n";
+			result += "You earned " + TotalFrequentRenterPoints + " frequent renter points";
 			return result;
 			
 
 			
 		}
 		
+		private double TotalCharge
+		{
+			get
+			{
+				double result = 0;
+				foreach(Rental each in rentals)
+				{
+					result += each.Charge;
+				}
+				return result;
+			}
+		}
+		
+		private int TotalFrequentRenterPoints
+		{
+			get
+			{
+				int result = 0;
+				foreach(Rental each in rentals)
+				{
+					result += each.FrequentRenterPoints;
+				}
+				return result;
+			}
+		}
 
 	}
 }
