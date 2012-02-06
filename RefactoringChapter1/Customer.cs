@@ -32,15 +32,7 @@ namespace RefactoringChapter1
 			foreach (Rental rental in rentals)
 			{
 				
-				// add frequent renter points
-				frequentRenterPoints++;
-			
-				// add bonus for a two day new release rental
-				if (rental.Movie.PriceCode == Movie.NewRelease &&
-				    rental.DaysRented > 1)
-				{
-					frequentRenterPoints++;
-				}
+				frequentRenterPoints += rental.FrequentRenterPoints;
 				
 				// show figures for this rental
 				result += "\t" + rental.Movie.Title + "\t" +

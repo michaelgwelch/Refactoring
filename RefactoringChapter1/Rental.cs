@@ -54,6 +54,17 @@ namespace RefactoringChapter1
 				return result;
 			}
 		}
+		
+		public int FrequentRenterPoints 
+		{
+			get
+			{
+				
+				return (Movie.PriceCode == Movie.NewRelease &&
+				    DaysRented > 1) ? 2 : 1;
+
+			}
+		}
 	}
 	
 	
