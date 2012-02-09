@@ -45,10 +45,12 @@ namespace RefactoringChapter1
 		public string HtmlStatement ()
 		{
 			string result = "<H1>Rentals for <EM>" + Name + "</EM></H1><P>\n";
-			foreach (Rental each in rentals)
-			{
-				result += each.Movie.Title + ": " + each.Charge + "<BR>\n";
-			}
+			
+			// add all lines
+			result += rentals.Aggregate("", (lines, rental) =>
+			                            lines + rental.Movie.Title + ": " +
+			                            rental.Charge + "<BR>\n");
+			
 			// add footer lines
 			result += "<P>You owe <EM>" + TotalCharge + "</EM><P>\n";
 			result += "On this rental you earned <EM>" + TotalFrequentRenterPoints +
