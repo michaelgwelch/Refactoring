@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace RefactoringChapter1
@@ -18,7 +19,8 @@ namespace RefactoringChapter1
 			rentals.Add (rental);
 		}
 		
-		public string Name {
+		public string Name
+		{
 			get { return _name; }
 		}
 		
@@ -45,10 +47,10 @@ namespace RefactoringChapter1
 			
 		}
 		
-		public string HtmlStatement() 
+		public string HtmlStatement ()
 		{
 			string result = "<H1>Rentals for <EM>" + Name + "</EM></H1><P>\n";
-			foreach(Rental each in rentals)
+			foreach (Rental each in rentals)
 			{
 				result += each.Movie.Title + ": " + each.Charge + "<BR>\n";
 			}
@@ -63,12 +65,9 @@ namespace RefactoringChapter1
 		{
 			get
 			{
-				double result = 0;
-				foreach(Rental each in rentals)
-				{
-					result += each.Charge;
-				}
-				return result;
+				
+				return rentals.Sum(rental => rental.Charge);
+
 			}
 		}
 		
@@ -76,12 +75,7 @@ namespace RefactoringChapter1
 		{
 			get
 			{
-				int result = 0;
-				foreach(Rental each in rentals)
-				{
-					result += each.FrequentRenterPoints;
-				}
-				return result;
+				return rentals.Sum(rental => rental.FrequentRenterPoints);
 			}
 		}
 

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringChapter1", "RefactoringChapter1\RefactoringChapter1.csproj", "{45B46538-6022-4C6A-9C27-48E1E5B5EA02}"
 EndProject
 Global
