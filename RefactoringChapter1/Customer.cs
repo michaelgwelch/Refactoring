@@ -29,14 +29,9 @@ namespace RefactoringChapter1
 			string result = "Rental Record for " + Name + "\n";
 			
 			// determine ammounts for each line
-			foreach (Rental rental in rentals)
-			{
-				
-				// show figures for this rental
-				result += "\t" + rental.Movie.Title + "\t" +
-					rental.Charge + "\n";
-				
-			}
+			result += rentals.Aggregate("", (lines, rental) => lines + 
+			                              "\t" + rental.Movie.Title +
+			                              "\t" + rental.Charge + "\n");
 			
 			// add footer lines
 			result += "Amount owed is " + TotalCharge + "\n";
