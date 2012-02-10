@@ -7,7 +7,7 @@ namespace RefactoringChapter1
 	public class Customer
 	{
 		private string _name;
-		private List<Rental> rentals = new List<Rental> ();
+		private List<Rental> _rentals = new List<Rental> ();
 		
 		public Customer (string name)
 		{
@@ -16,7 +16,7 @@ namespace RefactoringChapter1
 		
 		public void AddRental (Rental rental)
 		{
-			rentals.Add (rental);
+			_rentals.Add (rental);
 		}
 		
 		public string Name
@@ -29,7 +29,7 @@ namespace RefactoringChapter1
 			string result = "Rental Record for " + Name + "\n";
 			
 			// determine ammounts for each line
-			result += rentals.Aggregate("", (lines, rental) => lines + 
+			result += _rentals.Aggregate("", (lines, rental) => lines + 
 			                              "\t" + rental.Movie.Title +
 			                              "\t" + rental.Charge + "\n");
 			
@@ -47,7 +47,7 @@ namespace RefactoringChapter1
 			string result = "<H1>Rentals for <EM>" + Name + "</EM></H1><P>\n";
 			
 			// add all lines
-			result += rentals.Aggregate("", (lines, rental) =>
+			result += _rentals.Aggregate("", (lines, rental) =>
 			                            lines + rental.Movie.Title + ": " +
 			                            rental.Charge + "<BR>\n");
 			
@@ -63,7 +63,7 @@ namespace RefactoringChapter1
 			get
 			{
 				
-				return rentals.Sum(rental => rental.Charge);
+				return _rentals.Sum(rental => rental.Charge);
 
 			}
 		}
@@ -72,7 +72,7 @@ namespace RefactoringChapter1
 		{
 			get
 			{
-				return rentals.Sum(rental => rental.FrequentRenterPoints);
+				return _rentals.Sum(rental => rental.FrequentRenterPoints);
 			}
 		}
 
