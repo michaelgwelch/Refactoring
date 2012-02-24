@@ -12,7 +12,7 @@ namespace RefactoringChapter1
         public Movie(string title, int priceCode)
         {
             _title = title;
-            _priceCode = priceCode;
+            PriceCode = priceCode;
         }
 
         public int PriceCode
