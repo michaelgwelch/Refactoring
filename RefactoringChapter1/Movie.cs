@@ -1,3 +1,5 @@
+using System;
+
 namespace RefactoringChapter1
 {
     public class Movie
@@ -7,7 +9,7 @@ namespace RefactoringChapter1
         public const int NewRelease = 1;
 
         private string _title;
-        private int _priceCode;
+        private Price _price;
 
         public Movie(string title, int priceCode)
         {
@@ -17,8 +19,28 @@ namespace RefactoringChapter1
 
         public int PriceCode
         {
-            get { return _priceCode; }
-            set { _priceCode = value; }
+            get { return _price.PriceCode; }
+            set {
+                switch (value)
+                {
+                    case Regular:
+                        _price = new RegularPrice();
+                        break;
+
+                    case Childrens:
+                        _price = new ChildrensPrice();
+                        break;
+
+                    case NewRelease:
+                        _price = new NewReleasePrice();
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException("value","Incorrect price code");
+
+
+                }
+            }
         }
 
         public string Title
