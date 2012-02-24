@@ -3,6 +3,8 @@
     public abstract class Price
     {
         public abstract int PriceCode { get; }
+
+        public abstract double GetCharge(int daysRented);
     }
 
     public class ChildrensPrice : Price
@@ -10,6 +12,15 @@
         public override int PriceCode
         {
             get { return Movie.Childrens; }
+        }
+        public override double GetCharge(int daysRented)
+        {
+            double result = 1.5;
+            if (daysRented > 3)
+            {
+                result += (daysRented - 3) * 1.5;
+            }
+            return result;
         }
     }
 
@@ -19,6 +30,11 @@
         {
             get { return Movie.NewRelease; }
         }
+
+        public override double GetCharge(int daysRented)
+        {
+            return daysRented * 3;
+        }
     }
 
     public class RegularPrice : Price
@@ -26,6 +42,16 @@
         public override int PriceCode
         {
             get { return Movie.Regular; }
+        }
+
+        public override double GetCharge(int daysRented)
+        {
+            double result = 2;
+            if (daysRented > 2)
+            {
+                result += (daysRented - 2) * 1.5;
+            }
+            return result;
         }
     }
 }
