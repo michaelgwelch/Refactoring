@@ -5,6 +5,12 @@
         public abstract int PriceCode { get; }
 
         public abstract double GetCharge(int daysRented);
+
+        public virtual int GetFrequentRenterPoints(int daysRented)
+        {
+            return 1;
+        }
+
     }
 
     public class ChildrensPrice : Price
@@ -22,6 +28,7 @@
             }
             return result;
         }
+
     }
 
     public class NewReleasePrice : Price
@@ -35,6 +42,12 @@
         {
             return daysRented * 3;
         }
+
+        public override int GetFrequentRenterPoints(int daysRented)
+        {
+            return 2;
+        }
+
     }
 
     public class RegularPrice : Price
